@@ -18,8 +18,11 @@ root = lxml.html.fromstring(html)
 lis = root.cssselect('li p a')
 #create a dictionary to store what we find
 record = {}
-for li in lis:
-        print(li.text_content())
+#We start from 3416 beacuse 3417 rows were saved before error
+for li in lis[3416:]:
+        #This next line is uncommented because it caused a problem
+        #print(li.text_content())
+        #This next line is the troubleshooted version
         print(li.text_content().encode('utf-8').strip())
         record['address'] = li.text_content()
         record['postcode'] = li.text_content().split(" ")[-2]+" "+li.text_content().split(" ")[-1]
