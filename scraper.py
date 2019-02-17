@@ -10,9 +10,11 @@ import lxml.html
 # # Read in a page
 # html = scraperwiki.scrape("http://foo.com")
 html = scraperwiki.scrape("https://www.sdlauctions.co.uk/property-list/")
+print(html)
 #
 # # Find something on the page using css selectors
 # root = lxml.html.fromstring(html)
+'''
 root = lxml.html.fromstring(html)
 # root.cssselect("div[align='left']")
 lis = root.cssselect('li p a')
@@ -43,3 +45,4 @@ for li in lis[3416:]:
 # All that matters is that your final data is written to an SQLite database
 # called "data.sqlite" in the current working directory which has at least a table
 # called "data".
+'''
