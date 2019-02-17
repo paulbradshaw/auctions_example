@@ -16,6 +16,8 @@ html = scraperwiki.scrape("https://www.sdlauctions.co.uk/property-list/")
 root = lxml.html.fromstring(html)
 # root.cssselect("div[align='left']")
 lis = root.cssselect('li p a')
+#create a dictionary to store what we find
+record = {}
 for li in lis:
         print(li.text_content())
         record['address'] = li.text_content()
