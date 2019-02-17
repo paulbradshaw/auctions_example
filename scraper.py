@@ -20,6 +20,7 @@ lis = root.cssselect('li p a')
 record = {}
 for li in lis:
         print(li.text_content())
+        print(li.text_content().encode('utf-8').strip())
         record['address'] = li.text_content()
         record['postcode'] = li.text_content().split(" ")[-2]+" "+li.text_content().split(" ")[-1]
         record['postcode district'] = li.text_content().split(" ")[-2]
