@@ -6,10 +6,22 @@
 #
 # # Read in a page
 # html = scraperwiki.scrape("http://foo.com")
+html = scraperwiki.scrape("https://www.sdlauctions.co.uk/property-list/")
 #
 # # Find something on the page using css selectors
 # root = lxml.html.fromstring(html)
+root = lxml.html.fromstring(html)
 # root.cssselect("div[align='left']")
+lis = root.cssselect('li p a')
+for li in lis:
+        print(li.text_content())
+        record['address'] = li.text_content()
+        record['postcode'] = li.text_content().split(" ")[-2]+" "+li.text_content().split(" ")[-1]
+        record['postcode district'] = li.text_content().split(" ")[-2]
+        detaillink = "https://www.sdlauctions.co.uk"+li.attrib['href']
+        record['link'] = detaillink
+        #record['date'] = scrapedetail(detaillink)
+        scraperwiki.sqlite.save(['address'],record, table_name='sdlauctions')
 #
 # # Write out to the sqlite database using scraperwiki library
 # scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
