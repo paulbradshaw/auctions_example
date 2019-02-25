@@ -12,7 +12,8 @@ import lxml.html
 html = scraperwiki.scrape("https://www.sdlauctions.co.uk/property-list/")
 print(html)
 #
-# # Find something on the page using css selectors
+# Find something on the page using css selectors
+root = lxml.html.fromstring(html)
 #Change "li p a" to a different CSS selector to grab something else
 #Look for an a tag inside a p tag inside an li tag
 #Store the matches in 'matchedlinks'
