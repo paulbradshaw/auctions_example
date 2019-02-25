@@ -23,13 +23,14 @@ print(matchedlinks)
 #create a dictionary to store what we find
 record = {}
 #We start from 3416 beacuse 3417 rows were saved before error
-'''
-for li in matchedlinks[3416:]:
+for li in matchedlinks:
         #This next line is uncommented because it caused a problem
         #print(li.text_content())
         #This next line is the troubleshooted version
-        print(li.text_content().encode('utf-8').strip())
-        record['address'] = li.text_content()
+        #print(li.text_content().encode('utf-8').strip())
+        print(li.text_content())
+        #record['address'] = li.text_content()
+'''
         record['postcode'] = li.text_content().split(" ")[-2]+" "+li.text_content().split(" ")[-1]
         record['postcode district'] = li.text_content().split(" ")[-2]
         detaillink = "https://www.sdlauctions.co.uk"+li.attrib['href']
