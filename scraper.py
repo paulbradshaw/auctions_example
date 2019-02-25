@@ -19,7 +19,7 @@ root = lxml.html.fromstring(html)
 #Store the matches in 'matchedlinks'
 matchedlinks = root.cssselect("li p a")
 #print that
-print(matchedlinks)
+#print(matchedlinks)
 #create a dictionary to store what we find
 record = {}
 #We start from 3416 beacuse 3417 rows were saved before error
