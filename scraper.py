@@ -13,15 +13,17 @@ html = scraperwiki.scrape("https://www.sdlauctions.co.uk/property-list/")
 print(html)
 #
 # # Find something on the page using css selectors
-# root = lxml.html.fromstring(html)
-'''
-root = lxml.html.fromstring(html)
-# root.cssselect("div[align='left']")
-lis = root.cssselect('li p a')
+#Change "li p a" to a different CSS selector to grab something else
+#Look for an a tag inside a p tag inside an li tag
+#Store the matches in 'matchedlinks'
+matchedlinks = root.cssselect("li p a")
+#print that
+print(matchedlinks)
 #create a dictionary to store what we find
 record = {}
 #We start from 3416 beacuse 3417 rows were saved before error
-for li in lis[3416:]:
+'''
+for li in matchedlinks[3416:]:
         #This next line is uncommented because it caused a problem
         #print(li.text_content())
         #This next line is the troubleshooted version
@@ -33,6 +35,7 @@ for li in lis[3416:]:
         record['link'] = detaillink
         #record['date'] = scrapedetail(detaillink)
         scraperwiki.sqlite.save(['address'],record, table_name='sdlauctions')
+'''
 #
 # # Write out to the sqlite database using scraperwiki library
 # scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
