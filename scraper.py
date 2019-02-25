@@ -30,13 +30,14 @@ for li in matchedlinks:
         #print(li.text_content().encode('utf-8').strip())
         print(li.text_content())
         #record['address'] = li.text_content()
+        scraperwiki.sqlite.save(['address'],record)
 '''
         record['postcode'] = li.text_content().split(" ")[-2]+" "+li.text_content().split(" ")[-1]
         record['postcode district'] = li.text_content().split(" ")[-2]
         detaillink = "https://www.sdlauctions.co.uk"+li.attrib['href']
         record['link'] = detaillink
         #record['date'] = scrapedetail(detaillink)
-        scraperwiki.sqlite.save(['address'],record, table_name='sdlauctions')
+        
 '''
 #
 # # Write out to the sqlite database using scraperwiki library
